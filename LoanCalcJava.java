@@ -5,7 +5,7 @@ public class LoanCalcJava {
   public static String version = "v0.1";
 
   public static void main(String[] args) {
-    System.out.println("AutoCalcGo! " + version + "\n");
+    System.out.println("LoanCalcJava! " + version + "\n");
 
     start();
   }
@@ -16,7 +16,7 @@ public class LoanCalcJava {
     String question = "\nHow would you like to calculate?\n" +
                   "\n" +
                   "(1) Monthly payment\n" +
-                  "(2) Loan amount from monthly payment\n";
+                  "(2) Loan amount from monthly payment";
     System.out.println(question);
 
     String i = scanner.next();
@@ -25,13 +25,13 @@ public class LoanCalcJava {
       case "1":
       case "month":
       case "m":
-        System.out.println("Month");
+        System.out.println("\nCalc Month");
         CalcMonthly.calcMonthly();
         break;
       case "2":
       case "loan":
       case "l":
-        System.out.println("Loan");
+        System.out.println("\nCalc Loan");
         CalcLoan.calcLoan();
         break;
       default:
