@@ -1,16 +1,15 @@
 import java.util.Scanner;
 
 public class LoanCalcJava {
-  
-  public static String version = "v0.1";
 
   public static void main(String[] args) {
+    String version = "v0.1";
     System.out.println("LoanCalcJava! " + version + "\n");
 
     start();
   }
 
-  protected static void start() {
+  private static void start() {
     Scanner scanner = new Scanner(System.in);
 
     String question = "\nHow would you like to calculate?\n" +
@@ -42,7 +41,7 @@ public class LoanCalcJava {
     exit();
   }
 
-  protected static void exit() {
+  private static void exit() {
     Scanner scanner = new Scanner(System.in);
     System.out.print("\n\nPerform another? ");
 

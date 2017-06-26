@@ -1,35 +1,36 @@
 import java.util.Scanner;
 
-public class CalcLoan {
+class CalcLoan {
 
-  protected static float loan, apr, term, monthly;
-  protected static Scanner scanner = new Scanner(System.in);
+  private static float apr, term, monthly;
+  private static Scanner scanner = new Scanner(System.in);
 
-  protected static void setMonthly(float m) {
+  private static void setMonthly(float m) {
     monthly = m;
   }
 
-  protected static float getMonthly() {
+  private static float getMonthly() {
     return monthly;
   }
 
-  protected static void setApr(float a) {
+  private static void setApr(float a) {
     apr = a;
   }
 
-  protected static float getApr() {
+  private static float getApr() {
     return apr;
   }
 
-  protected static void setTerm(float t) {
+  private static void setTerm(float t) {
     term = t;
   }
 
-  protected static float getTerm() {
+  private static float getTerm() {
     return term;
   }
 
-  public static void calcLoan() {
+  static void calcLoan() {
+    //noinspection UnusedAssignment
     float i = -1;
 
     System.out.print("Enter monthly amount: ");
@@ -42,6 +43,7 @@ public class CalcLoan {
     } while (i < 0);
     setMonthly(i);
 
+    //noinspection UnusedAssignment
     i = -1;
     System.out.print("Enter annual interest rate (APR): ");
     do {
@@ -53,6 +55,7 @@ public class CalcLoan {
     } while (i < 0);
     setApr(i);
 
+    //noinspection UnusedAssignment
     i = -1;
     System.out.print("Enter loan term in years: ");
     do {
