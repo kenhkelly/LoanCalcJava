@@ -24,7 +24,7 @@ class Gui {
         guiFrame.setVisible(true);
     }
 
-    static JComponent LoanGui() {
+    private static JComponent LoanGui() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
 
@@ -77,7 +77,7 @@ class Gui {
         return panel;
     }
 
-    static JComponent MonthlyGui() {
+    private static JComponent MonthlyGui() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
 
