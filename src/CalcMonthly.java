@@ -66,10 +66,13 @@ class CalcMonthly {
     } while (i < 0);
     setTerm(i);
 
-    float j = (getApr() / 100 / 12);
-    float term = getTerm() * 12;
-    float monthly = getLoan() * (float)(j / (1 - Math.pow(1 + j, -term)));
-
+    float monthly = calculate(getLoan(), getApr(), getTerm());
     System.out.println(String.format("Monthly payment is: %.2f", monthly));
+  }
+
+  public static float calculate(float loanAmount, float aprAmount, float termAmount) {
+    float j = (aprAmount / 100 / 12);
+    float term = termAmount * 12;
+    return loanAmount * (float)(j / (1 - Math.pow(1 + j, -term)));
   }
 }

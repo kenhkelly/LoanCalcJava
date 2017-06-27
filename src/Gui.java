@@ -75,12 +75,54 @@ class Gui {
     }
 
     static JComponent MonthlyGui() {
-        JPanel monthlyPanel = new JPanel();
-        JLabel monthlyFiller = new JLabel("Monthly");
-        monthlyFiller.setHorizontalAlignment(JLabel.CENTER);
-        monthlyPanel.setLayout(new GridLayout(4,2));
-        monthlyPanel.add(monthlyFiller);
-        return monthlyPanel;
+        JPanel panel = new JPanel();
+        JLabel filler = new JLabel("Monthly");
+        filler.setHorizontalAlignment(JLabel.CENTER);
+        panel.setLayout(new GridBagLayout());
+
+        addComponent(panel, filler, 1, 1, 3,1);
+
+        addComponent(panel, new JLabel("Loan amount:"), 1,2,2,1);
+        JTextField loanAmount = new JTextField();
+        addComponent(panel, loanAmount, 3,2,1,1);
+
+        addComponent(panel, new JLabel("Annual % Rate (APR):"), 1,3,2,1);
+        JTextField aprAmount = new JTextField();
+        addComponent(panel, aprAmount, 3,3,1,1);
+
+        addComponent(panel, new JLabel("Loan Term in Years: "), 1,4,2,1);
+        JTextField termAmount = new JTextField();
+        addComponent(panel, termAmount, 3,4,1,1);
+
+        addComponent(panel, new JLabel("Monthly Is: "), 1,5,2,1);
+        JTextField monthlyAmount = new JTextField();
+        monthlyAmount.disable();
+        addComponent(panel, monthlyAmount,3,5,1,1);
+
+        Action action = new AbstractAction("Calculate") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (loanAmount.getText().length() == 0 || aprAmount.getText().length() == 0 || termAmount.getText().length() == 0) {
+                    return;
+                }
+
+                float la = Float.parseFloat(loanAmount.getText());
+                float aa = Float.parseFloat(aprAmount.getText());
+                float ta = Float.parseFloat(termAmount.getText());
+                float monthly = CalcMonthly.calculate(la, aa, ta);
+                out.println(monthly);
+
+                monthlyAmount.setText(String.format("%.2f", monthly));
+            }
+        };
+        JButton button = new JButton(action);
+        addComponent(panel, button, 1,6,3,1);
+
+        InputMap input = panel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        input.put(KeyStroke.getKeyStroke("ENTER"), "submit");
+        panel.getActionMap().put("submit", action);
+
+        return panel;
     }
 
     private static void addComponent(Container container, Component component, int x, int y, int width, int height) {
