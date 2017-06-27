@@ -26,11 +26,14 @@ class Gui {
 
     static JComponent LoanGui() {
         JPanel panel = new JPanel();
-        JLabel filler = new JLabel("Loan");
-        filler.setHorizontalAlignment(JLabel.CENTER);
         panel.setLayout(new GridBagLayout());
 
-        addComponent(panel, filler, 1, 1, 3,1);
+        JLabel header = new JLabel("Calculate Total Loan");
+        header.setHorizontalAlignment(JLabel.CENTER);
+        Font font = header.getFont();
+        int size = (int) (font.getSize() * 1.2);
+        header.setFont(new Font(font.getFontName(), Font.BOLD, size));
+        addComponent(panel, header, 1, 1, 3,1);
 
         addComponent(panel, new JLabel("Monthly amount:"), 1,2,2,1);
         JTextField monthlyAmount = new JTextField();
@@ -76,11 +79,14 @@ class Gui {
 
     static JComponent MonthlyGui() {
         JPanel panel = new JPanel();
-        JLabel filler = new JLabel("Monthly");
-        filler.setHorizontalAlignment(JLabel.CENTER);
         panel.setLayout(new GridBagLayout());
 
-        addComponent(panel, filler, 1, 1, 3,1);
+        JLabel header = new JLabel("Calculate Monthly Payment");
+        header.setHorizontalAlignment(JLabel.CENTER);
+        Font font = header.getFont();
+        int size = (int) (font.getSize() * 1.2);
+        header.setFont(new Font(font.getFontName(), Font.BOLD, size));
+        addComponent(panel, header, 1, 1, 3,1);
 
         addComponent(panel, new JLabel("Loan amount:"), 1,2,2,1);
         JTextField loanAmount = new JTextField();
