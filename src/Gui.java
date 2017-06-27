@@ -18,8 +18,8 @@ class Gui {
         guiFrame.setLocationRelativeTo(null);
 
         final JTabbedPane pane = new JTabbedPane();
-        pane.addTab("Loan", LoanGui());
         pane.addTab("Monthly", MonthlyGui());
+        pane.addTab("Loan", LoanGui());
         guiFrame.add(pane);
         guiFrame.setVisible(true);
     }
