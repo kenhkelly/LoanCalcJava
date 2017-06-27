@@ -9,18 +9,23 @@ import static java.lang.System.out;
  */
 class Gui {
 
-    static void runGui() {
+    static void runGui(String version) {
         JFrame guiFrame = new JFrame();
 
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("LoanCalcJava");
-        guiFrame.setSize(300, 300);
+        guiFrame.setSize(300, 400);
         guiFrame.setLocationRelativeTo(null);
+        guiFrame.setLayout(new GridBagLayout());
 
         final JTabbedPane pane = new JTabbedPane();
         pane.addTab("Monthly", MonthlyGui());
         pane.addTab("Loan", LoanGui());
-        guiFrame.add(pane);
+        addComponent(guiFrame, pane, 1, 1, 1, 2);
+
+        JLabel versionLabel = new JLabel(version);
+        versionLabel.setHorizontalAlignment(JLabel.CENTER);
+        addComponent(guiFrame, versionLabel, 1, 3,1,1);
         guiFrame.setVisible(true);
     }
 

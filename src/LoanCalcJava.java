@@ -4,9 +4,9 @@ import java.util.Scanner;
 import static java.lang.System.*;
 
 public class LoanCalcJava {
+  private static String version = "v1.0";
 
   public static void main(String[] args) {
-    String version = "v0.1";
     out.println("LoanCalcJava! " + version + "\n");
 
     start();
@@ -16,8 +16,7 @@ public class LoanCalcJava {
     if (console() != null) {
       runHeadless();
     } else {
-      out.println("not headless");
-      Gui.runGui();
+      Gui.runGui(version);
     }
   }
 
