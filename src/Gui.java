@@ -14,18 +14,18 @@ class Gui {
 
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("LoanCalcJava");
-        guiFrame.setSize(300, 400);
+        guiFrame.setSize(300, 325);
         guiFrame.setLocationRelativeTo(null);
         guiFrame.setLayout(new GridBagLayout());
 
         final JTabbedPane pane = new JTabbedPane();
         pane.addTab("Monthly", MonthlyGui());
         pane.addTab("Loan", LoanGui());
-        addComponent(guiFrame, pane, 1, 1, 1, 2);
+        addComponent(guiFrame, pane, 1, 1, 1, 2,9,9);
 
         JLabel versionLabel = new JLabel(version);
         versionLabel.setHorizontalAlignment(JLabel.CENTER);
-        addComponent(guiFrame, versionLabel, 1, 3,1,1);
+        addComponent(guiFrame, versionLabel, 1, 3,1,1,1,1);
         guiFrame.setVisible(true);
     }
 
@@ -38,24 +38,24 @@ class Gui {
         Font font = header.getFont();
         int size = (int) (font.getSize() * 1.2);
         header.setFont(new Font(font.getFontName(), Font.BOLD, size));
-        addComponent(panel, header, 1, 1, 3,1);
+        addComponent(panel, header, 1, 1, 3,1,1,1);
 
-        addComponent(panel, new JLabel("Monthly amount:"), 1,2,2,1);
+        addComponent(panel, new JLabel("Monthly amount:"), 1,2,2,1,1,1);
         JTextField monthlyAmount = new JTextField();
-        addComponent(panel, monthlyAmount, 3,2,1,1);
+        addComponent(panel, monthlyAmount, 3,2,1,1, 1.0, 1.0);
 
-        addComponent(panel, new JLabel("Annual % Rate (APR):"), 1,3,2,1);
+        addComponent(panel, new JLabel("Annual % Rate (APR):"), 1,3,2,1,1,1);
         JTextField aprAmount = new JTextField();
-        addComponent(panel, aprAmount, 3,3,1,1);
+        addComponent(panel, aprAmount, 3,3,1,1, 1.0, 1.0);
 
-        addComponent(panel, new JLabel("Loan Term in Years: "), 1,4,2,1);
+        addComponent(panel, new JLabel("Loan Term in Years: "), 1,4,2,1,1,1);
         JTextField termAmount = new JTextField();
-        addComponent(panel, termAmount, 3,4,1,1);
+        addComponent(panel, termAmount, 3,4,1,1, 1.0,1.0);
 
-        addComponent(panel, new JLabel("Loan Is: "), 1,5,2,1);
+        addComponent(panel, new JLabel("Loan Is: "), 1,5,2,1,1,1);
         JTextField loanAmount = new JTextField();
         loanAmount.disable();
-        addComponent(panel, loanAmount,3,5,1,1);
+        addComponent(panel, loanAmount,3,5,1,1,1,1);
 
 
         Action action = new AbstractAction("Calculate") {
@@ -73,7 +73,7 @@ class Gui {
             }
         };
         JButton button = new JButton(action);
-        addComponent(panel, button, 1,6,3,1);
+        addComponent(panel, button, 1,6,3,1,1,1);
 
         InputMap input = panel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         input.put(KeyStroke.getKeyStroke("ENTER"), "submit");
@@ -91,24 +91,24 @@ class Gui {
         Font font = header.getFont();
         int size = (int) (font.getSize() * 1.2);
         header.setFont(new Font(font.getFontName(), Font.BOLD, size));
-        addComponent(panel, header, 1, 1, 3,1);
+        addComponent(panel, header, 1, 1, 3,1,1.0,1.0);
 
-        addComponent(panel, new JLabel("Loan amount:"), 1,2,2,1);
+        addComponent(panel, new JLabel("Loan amount:"), 1,2,2,1, 1, 1);
         JTextField loanAmount = new JTextField();
-        addComponent(panel, loanAmount, 3,2,1,1);
+        addComponent(panel, loanAmount, 3,2,1,1,1.0,1.0);
 
-        addComponent(panel, new JLabel("Annual % Rate (APR):"), 1,3,2,1);
+        addComponent(panel, new JLabel("Annual % Rate (APR):"), 1,3,2,1,1,1);
         JTextField aprAmount = new JTextField();
-        addComponent(panel, aprAmount, 3,3,1,1);
+        addComponent(panel, aprAmount, 3,3,1,1,1.0,1.0);
 
-        addComponent(panel, new JLabel("Loan Term in Years: "), 1,4,2,1);
+        addComponent(panel, new JLabel("Loan Term in Years: "), 1,4,2,1,1,1);
         JTextField termAmount = new JTextField();
-        addComponent(panel, termAmount, 3,4,1,1);
+        addComponent(panel, termAmount, 3,4,1,1,1.0,1.0);
 
-        addComponent(panel, new JLabel("Monthly Is: "), 1,5,2,1);
+        addComponent(panel, new JLabel("Monthly Is: "), 1,5,2,1,1,1);
         JTextField monthlyAmount = new JTextField();
         monthlyAmount.disable();
-        addComponent(panel, monthlyAmount,3,5,1,1);
+        addComponent(panel, monthlyAmount,3,5,1,1,1,1);
 
         Action action = new AbstractAction("Calculate") {
             @Override
@@ -127,7 +127,7 @@ class Gui {
             }
         };
         JButton button = new JButton(action);
-        addComponent(panel, button, 1,6,3,1);
+        addComponent(panel, button, 1,6,3,1,1,1);
 
         InputMap input = panel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         input.put(KeyStroke.getKeyStroke("ENTER"), "submit");
@@ -136,8 +136,8 @@ class Gui {
         return panel;
     }
 
-    private static void addComponent(Container container, Component component, int x, int y, int width, int height) {
-        GridBagConstraints gbc = new GridBagConstraints(x, y, width, height, 1.0, 1.0,
+    private static void addComponent(Container container, Component component, int x, int y, int width, int height, double weightx, double weighty) {
+        GridBagConstraints gbc = new GridBagConstraints(x, y, width, height, weightx, weighty,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0),
                 0, 0);
         container.add(component, gbc);
